@@ -1,0 +1,83 @@
+# Modify this code to update the DB schema diagram.
+# To reset the sample schema, replace everything with
+# two dots ('..' - without quotes).
+
+Imobiliaria
+-
+casaID int PK
+status int
+venda boolean
+construcao date
+endID int FK >- Endereco.endID
+valor float
+valorL float NULL
+
+Endereco
+-
+endID int PK
+rua varchar(50)
+numero int
+bairro varchar(50)
+cidade varchar(50)
+UF char(2)
+cep int
+
+Casa
+-
+casaID int FK >- Imobiliaria.casaID
+quartos int
+suites int
+salaEstar int
+salaJantar int
+vagas int
+area float
+armario int
+descricao varchar(100)
+
+apartamento
+-
+casaID int FK >- Imobiliaria.casaID
+quartos int
+suites int
+salaEstar int
+salaJantar int
+vagas int
+area float
+armario int
+descricao varchar(100)
+andar int
+condominio float
+portaria24 boolean
+
+salaComercial
+-
+casaID int FK >- Imobiliaria.casaID
+area float
+banheiros int
+comodos int
+descricao varchar(100)
+
+terreno
+-
+casaID int FK >- Imobiliaria.casaID
+area float
+largura float
+comprimento float
+aclive boolean
+descricao varchar(100)
+
+Fotos
+-
+casaID int FK >- Imobiliaria.casaID
+nome varchar(50)
+URL varchar(50)
+
+Cliente
+-
+id int pk
+
+RelacaoCliente
+-
+casaID int FK >- Imobiliaria.casaID
+clienteID int FK >- Cliente.id
+relacao int

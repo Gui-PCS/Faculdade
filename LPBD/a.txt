@@ -1,0 +1,99 @@
+# Modify this code to update the DB schema diagram.
+# To reset the sample schema, replace everything with
+# two dots ('..' - without quotes).
+
+casa
+----
+id pk int FK >- imoveis.id
+quartos int
+suites int
+banheiro int
+salasStar int
+salasJantar int
+garagem int
+area float
+armarioEmbutido boolean
+endid int FK >- enderecos.id
+properid int FK >- cliente.id
+imagensid int FK >- imagens.id
+
+apertamento
+----
+id pk int FK >- imoveis.id
+andar int
+condominio float
+portaria24 boolean
+piscina boolean
+churrasqueira boolean
+quartos int
+suites int
+banheiro int
+salasStar int
+salasJantar int
+garagem int
+area float
+varanda boolean
+armarioEmbutido boolean
+endid int FK >- enderecos.id
+properid int FK >- cliente.id
+imagensid int FK >- imagens.id
+
+terreno
+---------
+id pk int FK >- imoveis.id
+area float
+largura float
+comprimento float
+tipo int
+endid int FK >- enderecos.id
+properid int FK >- cliente.id
+imagensid int FK >- imagens.id
+
+salaComercial
+------------
+id pk int
+banheiros int
+comodos int
+area float
+vagas int
+endid int FK >- enderecos.id
+properid int FK >- cliente.id
+imagensid int FK >- imagens.id
+
+
+enderecos
+------
+id pk int
+rua str
+bairro str null
+cidade str
+numero str
+cep int
+UF str
+
+imagens
+--------------
+id pk int
+url str
+nomeImg str
+
+imoveis
+-------
+id pk int 
+valor float
+status string
+
+cliente
+-----------------
+id int PK 
+nome str
+CPF int
+endereco str
+idRelacao int
+
+relacao
+--
+id int FK >- cliente.idRelacao
+idProprietario int
+idComprador int
+idFDP int
